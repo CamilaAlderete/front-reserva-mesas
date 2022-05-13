@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-cliente',
@@ -13,7 +14,9 @@ export class NuevoClienteComponent implements OnInit {
 
 
   constructor(
-	private toastr: ToastrService
+	  private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

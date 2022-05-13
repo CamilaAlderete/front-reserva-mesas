@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-lista-clientes',
@@ -19,6 +21,8 @@ export class ListaClientesComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +30,10 @@ export class ListaClientesComponent implements OnInit {
 
   holaaa(){
     this.toastr.success('hola capa','aaa');
+  }
+
+  nuevo(){
+    
   }
 
   
