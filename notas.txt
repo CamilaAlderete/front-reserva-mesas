@@ -1,0 +1,15 @@
+levantar servidor (puerto por defecto 4200)
+ng serve
+
+levantar servidor en un puerto especifico
+ng serve --port=4000
+
+generar componente
+ng generate component nombre_componente
+
+angular material - en terminal de proyecto
+ng add @angular/material
+
+
+
+https://stackoverflow.com/questions/41140187/can-not-find-module-angular-material
