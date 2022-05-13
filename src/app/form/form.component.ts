@@ -34,4 +34,15 @@ export class FormComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
+  mesas = [
+    { nro:1, capacidad:3},
+    { nro:2, capacidad:4},
+    { nro:3, capacidad:8},
+    { nro:4, capacidad:4},
+    { nro:3, capacidad:8},
+    { nro:4, capacidad:4},
+    { nro:3, capacidad:8},
+    { nro:4, capacidad:4}
+  ];
+
 }

@@ -1,0 +1,110 @@
+<div class="container d-flex">        
+    <app-sidenav class="col-2"></app-sidenav>
+    
+    <div class="col-11">
+
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between">
+                <h3 class="text-title">
+                    Nuevo Cliente
+                </h3>
+            </div>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                
+                    <p>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput type="text" [(ngModel)]="nombre">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+                    <mat-form-field appearance="fill">
+                            <mat-label>Direccion</mat-label>
+                            <input matInput type="text" [(ngModel)]="direccion">
+                        </mat-form-field>
+                    </p>
+                    
+
+                    <div class="col-md-3 d-flex justify-content-around">
+                        <button type="button" class="btn btn-primary btn-sm"
+                                (click)="guardar()">Guardar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm"
+                                (click)="cancelar()">Cancelar
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<!--- PROCESO PENTAHO
+
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between">
+        <h3 class="text-title">
+            Nuevo Proceso Pentaho
+        </h3>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <div class="container-fluid">
+           
+            <p>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" [(ngModel)]="nombre">
+                </mat-form-field>
+                
+            </p>
+
+            <p>
+               <mat-form-field appearance="fill">
+                    <mat-label>Direccion</mat-label>
+                    <input matInput type="text" [(ngModel)]="direccion">
+                </mat-form-field>
+            </p>
+            
+
+        <div class="col-md-3 d-flex justify-content-around">
+            <button type="button" class="btn btn-primary btn-sm"
+                    (click)="guardar()">Guardar
+            </button>
+            <button type="button" class="btn btn-danger btn-sm"
+                    (click)="cancelar()">Cancelar
+            </button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+-->
