@@ -9,12 +9,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class NuevoClienteComponent implements OnInit {
 
+  cedula = null;		
   nombre = '';
-  direccion = '';
+  apellido = '';
 
 
   constructor(
-	  private toastr: ToastrService,
+	private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -23,7 +24,7 @@ export class NuevoClienteComponent implements OnInit {
   }
 
   guardar(){
-	if( this.nombre === '' || this.direccion === '' ){
+	if( this.nombre === '' || this.apellido === '' || this.cedula=== null){
 		this.toastr.error('Debe completar todos los campos', 'Error');
 	}else{
 		this.guardarCliente();
@@ -32,14 +33,12 @@ export class NuevoClienteComponent implements OnInit {
   
 
   guardarCliente(){
-
+	
+	
   }
 
-
-
-
   cancelar() {
-	//this.router.navigate(['../'], {relativeTo: this.route});
+	this.router.navigate(['../'], {relativeTo: this.route});
   }
 
 
