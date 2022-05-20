@@ -18,7 +18,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatDividerModule} from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
 import { MatIconModule} from '@angular/material/icon';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core'
 import { InicioComponent } from './inicio/inicio.component';
 import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
 import { NuevoClienteComponent } from './clientes/nuevo-cliente/nuevo-cliente.component';
@@ -73,8 +74,13 @@ import { ToastrModule } from 'ngx-toastr';
     MatListModule,
     MatIconModule,
     ToastrModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

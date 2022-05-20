@@ -44,6 +44,14 @@ const routes: Routes = [
           { path: ':id/editar', component: EditarMesaComponent }
         ]
       },
+      { path: 'reservas',
+        children: [
+          { path: '', redirectTo: 'lista', pathMatch: 'full'},
+          { path: 'lista', component: ListaReservasComponent },
+          { path: 'nuevo', component: NuevaReservaComponent },
+          { path: ':id/editar', component: EditarReservaComponent }
+        ]
+      },
     ]
   }
  

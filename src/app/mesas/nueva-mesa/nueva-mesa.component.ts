@@ -19,7 +19,7 @@ export class NuevaMesaComponent implements OnInit {
 
 
   constructor(
-	private toastr: ToastrService,
+	  private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
