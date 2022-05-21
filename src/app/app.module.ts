@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormComponent } from './form/form.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -35,7 +36,6 @@ import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.co
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
 
 import { ToastrModule } from 'ngx-toastr';
-
 
 @NgModule({
   declarations: [
@@ -75,7 +75,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatIconModule,
     ToastrModule.forRoot(),
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [
     MatDatepickerModule,
