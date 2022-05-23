@@ -54,4 +54,14 @@ export class HTTPService {
   }
 
 
+  // get con datos en json
+  getFilter(path: string, payload: Object){
+    return this.http.post<any[]>(`${this.ROOT_URL}/${path}`, payload).pipe(
+      catchError((err) => {
+        return throwError( ()=> err);
+      })
+    );
+  }
+
+
 }
