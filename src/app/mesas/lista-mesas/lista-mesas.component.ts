@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
+import { HTTPService } from 'src/app/http.service';
 
 @Component({
   selector: 'app-lista-mesas',
@@ -7,17 +10,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaMesasComponent implements OnInit {
 
-  displayedColumns = ['id', 'nombre-mesa', 'restaurante', 'x', 'y', 'planta', 'acciones'];
+  displayedColumns = ['id', 'nombre-mesa', 'restaurante','capacidad', 'x', 'y', 'planta', 'acciones'];
 
-  dataSource = [
-    { id:1 , nombre: 'MESA 1' , idRestaurante: 1, x: 1, y: 1 , planta: 1},
-    { id:2 , nombre: 'MESA 2' , idRestaurante: 2, x: 1, y: 2 , planta:1}
+  dataSource:any
 
-  ];
-
-  constructor() { }
+  constructor(
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router, 
+    private httpService: HTTPService
+  ) { }
 
   ngOnInit(): void {
+    this.customInit();
   }
+
+  customInit(){
+    this.loadData();
+  }
+
+  loadData(){
+    this.httpService.getAll('mesa/')
+      .subscribe(e => {
+        console.log(e);
+        this.dataSource = e;
+      },
+      err => {
+        console.log(err);
+        this.toastr.error(
+          'No se pudo obtener la lista de mesas',
+          'Error'
+        );
+
+      });
+  }
+
+  
+  eliminar(id: string){
+    this.httpService.delete('mesa/', id)
+    .subscribe( e =>{
+      this.toastr.success('Mesa eliminada');
+      this.loadData();
+    }, err => {
+      console.log(err);
+      this.toastr.error('Error al eliminar mesa', 'Error');
+    });
+  }
+
+  editar(id: string){
+    return encodeURI(id) + '/editar/'
+  }
+
 
 }

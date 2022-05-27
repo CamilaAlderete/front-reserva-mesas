@@ -1,1 +1,101 @@
-<p>editar-mesa works!</p>
+
+<div class="container d-flex">        
+    
+    <div class="col-11">
+
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid" >
+                
+                    
+                    <h3 class="text-title">
+                        Editar Mesa
+                    </h3>
+                    
+                    
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput type="text" [(ngModel)]="mesa.nombre">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Restaurante</mat-label>
+                            <mat-select [(ngModel)]="mesa.RestauranteId">
+                                <mat-option *ngFor="let r of restaurantes" [value]="r.id" >
+                                    {{ r.id}} - {{ r.nombre }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </p>
+
+
+                    <!---<p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Id Restaurante</mat-label>
+                            <input matInput type="number" [(ngModel)]="mesa.RestauranteId">
+                        </mat-form-field>
+                        
+                    </p>--->
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Piso</mat-label>
+                            <input matInput type="number" [(ngModel)]="mesa.planta">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>X</mat-label>
+                            <input matInput type="number" [(ngModel)]="mesa.x">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Y</mat-label>
+                            <input matInput type="number" [(ngModel)]="mesa.y">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Capacidad</mat-label>
+                            <input matInput type="number" [(ngModel)]="mesa.capacidad">
+                        </mat-form-field>
+                        
+                    </p>
+                    
+
+                    <div class="col-md-6 d-flex justify-content-around">
+                        <button type="button" class="btn btn-primary btn-sm"
+                                (click)="guardar()">Guardar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm"
+                                (click)="atras()">Cancelar
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+

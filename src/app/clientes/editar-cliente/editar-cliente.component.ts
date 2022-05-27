@@ -15,9 +15,9 @@ export class EditarClienteComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-      private route: ActivatedRoute,
-      private router: Router,
-      private httpService: HTTPService
+    private route: ActivatedRoute,
+    private router: Router,
+    private httpService: HTTPService
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class EditarClienteComponent implements OnInit {
         
       }, err =>{
         console.log(err);
-        this.toastr.error('No se pudo crear cliente', 'Error');
+        this.toastr.error('No se pudo editar el cliente', 'Error');
       });
 	
   }
