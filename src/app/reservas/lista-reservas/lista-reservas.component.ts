@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HTTPService } from 'src/app/http.service';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-lista-reservas',
@@ -17,6 +18,12 @@ export class ListaReservasComponent implements OnInit {
   //restaurante, fecha, cliente, horario (creciente), mesa(creciente)
   dataSource:any
 
+  restaurantes: any;
+  clientes: any;
+
+  RestauranteId = null;
+  fecha = null;
+  ClienteId = null;
 
   constructor(
     private toastr: ToastrService,
@@ -32,6 +39,42 @@ export class ListaReservasComponent implements OnInit {
 
   customInit(){
     this.loadData();
+    this.loadRestaurantes();
+    this.loadClientes();
+  }
+
+  loadRestaurantes(){
+    this.httpService.getAll('restaurante/')
+    .subscribe(e => {
+      console.log(e);
+      this.restaurantes = e;
+    },
+    err => {
+      console.log(err);
+      this.toastr.error(
+        'No se pudo obtener la lista de restaurantes',
+        'Error'
+      );
+
+    });
+  }
+
+  loadClientes(){
+
+    this.httpService.getAll('cliente/')
+    .subscribe(e => {
+      console.log(e);
+      this.clientes = e;
+    },
+    err => {
+      console.log(err);
+      this.toastr.error(
+        'No se pudo obtener la lista de clientes',
+        'Error'
+      );
+
+    });
+
   }
 
   loadData(){
@@ -48,6 +91,37 @@ export class ListaReservasComponent implements OnInit {
         );
 
       });
+  }
+
+  filtrar(){
+
+    if( this.RestauranteId === null || this.fecha === null){
+      this.toastr.error('Los campos Restaurante y Fecha son obligatorios');
+    }else{
+
+      const e = {
+        fecha: new DatePipe('en-US').transform(this.fecha, 'yyyy-MM-dd'),
+        RestauranteId: this.RestauranteId,
+        ClienteId: this.ClienteId
+      }
+
+      this.httpService.getFilter('reservacion/filter', e)
+      .subscribe(e => {
+        console.log(e);
+        this.dataSource = e;
+      },
+      err => {
+        console.log(err);
+        this.toastr.error(
+          'No se pudo obtener la lista de reservas',
+          'Error'
+        );
+
+      });
+
+
+
+    }
   }
 
   

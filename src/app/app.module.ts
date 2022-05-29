@@ -34,8 +34,13 @@ import { EditarMesaComponent } from './mesas/editar-mesa/editar-mesa.component';
 import { ListaReservasComponent } from './reservas/lista-reservas/lista-reservas.component';
 import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
+import { BusquedaClienteComponent } from './reservas/nueva-reserva/nueva-reserva.component';
+import { RegistroClienteComponent } from './reservas/nueva-reserva/nueva-reserva.component';
+
 
 import { ToastrModule } from 'ngx-toastr';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +60,8 @@ import { ToastrModule } from 'ngx-toastr';
     ListaReservasComponent,
     NuevaReservaComponent,
     EditarReservaComponent,
+    BusquedaClienteComponent,
+    RegistroClienteComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     MatDatepickerModule,

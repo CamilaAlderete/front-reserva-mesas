@@ -4,6 +4,47 @@
     </h2>
 </div>
 
+<!----filtrado de reservas--->
+<div class="d-flex justify-content-around px-4">
+    
+
+        <mat-form-field appearance="fill" class="col-md-3">
+            <mat-label>Restaurante</mat-label>
+            <mat-select [(ngModel)]="RestauranteId">
+                <mat-option *ngFor="let r of restaurantes" [value]="r.id" >
+                    {{ r.id}} - {{ r.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-3">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="fecha" placeholder="dd/mm/aaaa">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-3">
+            <mat-label>Cliente</mat-label>
+            <mat-select [(ngModel)]="ClienteId">
+                <mat-option *ngFor="let c of clientes" [value]="c.id" >
+                    {{ c.id}} - {{ c.nombre }}&nbsp;{{ c.apellido }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <div>
+            
+            <button mat-button (click)="filtrar()"> <mat-icon>search</mat-icon> </button>
+
+            <button mat-button (click)="loadData()"> <mat-icon>clear_all</mat-icon></button>
+        </div>
+
+        
+    
+</div>
+
+<!----reservas---->
 <div class="m-3 px-4">
     <button class="btn btn-success btn-sm" routerLink="../nuevo">Nueva Reserva
     </button>&nbsp;&nbsp;&nbsp;
