@@ -140,4 +140,11 @@ export class ListaReservasComponent implements OnInit {
     return encodeURI(id) + '/editar/'
   }
 
+  limpiarFiltro(){
+    this.RestauranteId = null;
+    this.fecha = null;
+    this.ClienteId = null;
+    this.loadData();
+  }
+
 }
