@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
+import { HTTPService } from 'src/app/http.service';
 
 @Component({
   selector: 'app-lista-reservas',
@@ -7,21 +10,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaReservasComponent implements OnInit {
 
-  displayedColumns = ['id', 'restaurante', 'fecha','horario', 'planta',  'mesa', 'cliente', 'acciones'];
+  displayedColumns = ['id', 'restaurante', 'fecha','horario', 'mesa', 'cliente', 'acciones'];
 
   /*Reservacion cuneta con id, fecha, horaInicio, horaFin, MesaId, RestauranteId, ClienteId */
 
   //restaurante, fecha, cliente, horario (creciente), mesa(creciente)
-  dataSource = [
-    { id:1 , RestauranteId: 1, nombreRestaurante: 'Shagrila', fecha:'2022/05/12', planta:1, MesaId:1, nombreMesa:'LA MESA', ClienteId:1, nombreCliente: 'Camila', horaInicio:12, horaFin:14 },
-    { id:1 , RestauranteId: 1, nombreRestaurante: 'Shagrila', fecha:'2022/05/12', planta:1, MesaId:1, nombreMesa:'LA MESA', ClienteId:1, nombreCliente: 'Camila', horaInicio:12, horaFin:14 },
+  dataSource:any
 
 
-  ];
-
-  constructor() { }
+  constructor(
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router, 
+    private httpService: HTTPService
+  ) { }
 
   ngOnInit(): void {
+    this.customInit();
+  }
+
+
+  customInit(){
+    this.loadData();
+  }
+
+  loadData(){
+    this.httpService.getAll('reservacion/')
+      .subscribe(e => {
+        console.log(e);
+        this.dataSource = e;
+      },
+      err => {
+        console.log(err);
+        this.toastr.error(
+          'No se pudo obtener la lista de reservas',
+          'Error'
+        );
+
+      });
+  }
+
+  
+  eliminar(id: string){
+    this.httpService.delete('reservacion/', id)
+    .subscribe( e =>{
+      this.toastr.success('Reserva eliminada');
+      this.loadData();
+    }, err => {
+      console.log(err);
+      this.toastr.error('Error al eliminar la reserva', 'Error');
+    });
+  }
+
+  editar(id: string){
+    return encodeURI(id) + '/editar/'
   }
 
 }
