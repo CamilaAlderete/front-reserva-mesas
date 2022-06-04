@@ -78,7 +78,7 @@ export class ListaReservasComponent implements OnInit {
   }
 
   loadData(){
-    this.httpService.getAll('reservacion/')
+    this.httpService.post('reservacion/lista', {})
       .subscribe(e => {
         console.log(e);
         this.dataSource = e;
