@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common'
 })
 export class ListaReservasComponent implements OnInit {
 
-  displayedColumns = ['id', 'restaurante', 'fecha','horario', 'mesa', 'cliente', 'acciones'];
+  displayedColumns = ['id', 'restaurante', 'fecha','horario', 'mesa', 'capacidad', 'cliente', 'acciones'];
 
   /*Reservacion cuneta con id, fecha, horaInicio, horaFin, MesaId, RestauranteId, ClienteId */
 

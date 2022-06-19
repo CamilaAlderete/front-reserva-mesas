@@ -48,7 +48,7 @@ export class NuevaReservaComponent implements OnInit {
 
 
   //columnas de la tabla mesas libres
-  displayedColumns = ['id', 'nombre-mesa', 'restaurante', 'x', 'y', 'planta', 'acciones'];
+  displayedColumns = ['id', 'nombre-mesa', 'restaurante','capacidad', 'x', 'y', 'planta', 'acciones'];
 
   constructor(
     private toastr: ToastrService,

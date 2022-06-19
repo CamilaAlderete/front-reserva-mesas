@@ -91,8 +91,9 @@
 
                 </div>
 
-                <!---listado de mesas libres --->
 				<div class="col-md-8 m-2">
+                    
+                    <!---listado de mesas libres --->
 
                     <h3>
                         Mesas Libres
@@ -101,6 +102,65 @@
                     <table mat-table [dataSource]="mesas" class="col-md-11 mat-elevation-z1">
 
                         <!-- Position Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="nombre-mesa">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre mesa </th>
+                            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                        </ng-container>
+                
+                    
+                        <ng-container matColumnDef="restaurante">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Restaurante </th>
+                            <td mat-cell *matCellDef="let element"> {{element.RestauranteId}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="capacidad">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Capacidad </th>
+                            <td mat-cell *matCellDef="let element"> {{element.capacidad}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="x">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> X </th>
+                            <td mat-cell *matCellDef="let element"> {{element.x}} </td>
+                        </ng-container> 
+                        
+                        <ng-container matColumnDef="y">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Y </th>
+                            <td mat-cell *matCellDef="let element"> {{element.y}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="planta">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Planta </th>
+                            <td mat-cell *matCellDef="let element"> {{element.planta}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="acciones">
+                            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button class="btn btn-success btn-sm mx-2" (click)="reservar(element.id, element.RestauranteId)">Reservar</button>   
+                            </td>
+                
+                        </ng-container>
+                
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+                    </table>
+
+
+                    <!---listado de mesas ocupadas---> 
+                    <!---
+                    <br>
+                    <h3>
+                        Mesas Ocupadas
+                    </h3> 
+
+                    <table mat-table [dataSource]="mesasOcupadas" class="col-md-11 mat-elevation-z1">
+
                         <ng-container matColumnDef="id">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
                             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -143,7 +203,9 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 
-                    </table>
+                    </table>   
+                    --->
+
                 </div>
 			</div>
         </div>
