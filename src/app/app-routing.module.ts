@@ -15,6 +15,12 @@ import { ListaReservasComponent } from './reservas/lista-reservas/lista-reservas
 import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
 import { ConsumoComponent } from './consumo/consumo.component';
+import { ListaCategoriasComponent } from './categorias/lista-categorias/lista-categorias.component';
+import { NuevaCategoriaComponent } from './categorias/nueva-categoria/nueva-categoria.component';
+import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-categoria.component';
+import { ListaProductosComponent } from './productos/lista-productos/lista-productos.component';
+import { NuevoProductoComponent } from './productos/nuevo-producto/nuevo-producto.component';
+import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
 
 const routes: Routes = [
   { path: '', 
@@ -53,7 +59,23 @@ const routes: Routes = [
           { path: ':id/editar', component: EditarReservaComponent },
           { path: ':id/consumo', component:ConsumoComponent}
         ]
-      }
+      },
+      { path: 'categorias',
+        children: [
+          { path: '', redirectTo: 'lista', pathMatch: 'full'},
+          { path: 'lista', component: ListaCategoriasComponent },
+          { path: 'nuevo', component: NuevaCategoriaComponent },
+          { path: ':id/editar', component: EditarCategoriaComponent }
+        ]
+      },
+      { path: 'productos',
+        children: [
+          { path: '', redirectTo: 'lista', pathMatch: 'full'},
+          { path: 'lista', component: ListaProductosComponent },
+          { path: 'nuevo', component: NuevoProductoComponent },
+          { path: ':id/editar', component: EditarProductoComponent }
+        ]
+      },
     ]
   }
  

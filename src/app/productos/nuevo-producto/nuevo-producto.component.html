@@ -1,1 +1,72 @@
-<p>nuevo-producto works!</p>
+
+<div class="container d-flex">        
+    
+    <div class="col-11">
+
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid" >
+                
+                    
+                    <h3 class="text-title">
+                        Nuevo Producto
+                    </h3>
+                    
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput type="text" [(ngModel)]="nombre">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Precio</mat-label>
+                            <input matInput type="number" [(ngModel)]="precio" min="0">
+                        </mat-form-field>
+                        
+                    </p>
+
+                    <p>
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Categoria</mat-label>
+                            <mat-select [(ngModel)]="CategoriaProductoId">
+                                <mat-option *ngFor="let c of categorias" [value]="c.id" >
+                                  {{ c.nombre }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </p>
+                    
+
+                    <div class="col-md-6 d-flex justify-content-around">
+                        <button type="button" class="btn btn-primary btn-sm"
+                                (click)="guardar()">Guardar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm"
+                                (click)="atras()">Cancelar
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
