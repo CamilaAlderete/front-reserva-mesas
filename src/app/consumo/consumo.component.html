@@ -1,0 +1,161 @@
+<div class="container-fluid">
+
+    <!---datos de la reserva--->
+    <div class="row col-12 p-4">
+
+        <div class="d-flex align-items-start justify-content-between">
+            <h2>
+                Reservación
+            </h2>
+
+            <button class="btn btn-danger btn-sm">Cerrar Mesa</button>
+
+            
+        </div>
+
+        <div class="d-flex align-items-start justify-content-between">
+
+            <mat-form-field appearance="legacy"  class="col-2">
+                <mat-label>Restaurante</mat-label>
+                <input matInput [value]="reserva.nombreRestaurante" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy"  class="col-1">
+                <mat-label>Mesa</mat-label>
+                <input matInput [value]="reserva.nombreMesa" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy"  class="col-1">
+                <mat-label>Capacidad</mat-label>
+                <input matInput [value]="reserva.capacidad" readonly>
+            </mat-form-field>
+
+        
+            <mat-form-field appearance="legacy"  class="col-1">
+              <mat-label>Fecha</mat-label>
+              <input matInput [value]="reserva.fecha" readonly>
+            </mat-form-field>
+       
+            <mat-form-field appearance="legacy"  class="col-1">
+              <mat-label>Desde</mat-label>
+              <input matInput [value]="reserva.horaInicio" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy"  class="col-1">
+                <mat-label>Hasta</mat-label>
+                <input matInput [value]="reserva.horaFin" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy"  class="col-2">
+                <mat-label>Cliente</mat-label>
+                <input matInput [value]="reserva.nombreCliente" readonly>
+                <!--<mat-icon matSuffix>edit</mat-icon>--->
+            </mat-form-field>
+
+            <button class="btn btn-outline-primary btn-sm d-flex align-items-center"><mat-icon>edit</mat-icon></button>
+
+
+        </div>
+
+        
+    </div>
+
+    <!---consumo--->
+    <div class="row col-12 p-4">
+        <h2>
+            Consumo - Total {{totalConsumo}} Gs.
+        </h2>
+
+        <div class="d-flex justify-content-between align-items-baseline">
+
+            <mat-form-field appearance="fill" class="col-md-3">
+                <mat-label>Categoria</mat-label>
+                <mat-select 
+                    [(ngModel)]="CategoriaId"
+                    (ngModelChange) = "getProductosByCategoria()"
+                >
+                    <mat-option *ngFor="let c of categorias" [value]="c.id" >
+                      {{ c.nombre }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="col-md-3">
+                <mat-label>Producto</mat-label>
+                <mat-select 
+                    [(ngModel)]="ProductoId"
+                    (ngModelChange) = "totalProducto()"
+                >
+                    <mat-option *ngFor="let p of productos" [value]="p.id" >
+                      {{ p.nombre }} a {{p.precio}} c/u
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-1">
+                <mat-label>Cantidad</mat-label>
+                <input matInput [(ngModel)]="cantidad" type="number" min="1" (change) = "totalProducto()">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill" class="col-md-3">
+                <mat-label>Total Gs.</mat-label>
+                <input matInput [(ngModel)]="total" type="number" readonly>               
+            </mat-form-field>
+
+
+            <button class="btn btn-success btn-sm">Agregar</button>
+        </div>
+
+        <br><br>
+
+        <div class="d-flex justify-content-center">
+            <table mat-table [dataSource]="listaConsumo" class="col-md-12 mat-elevation-z1">
+        
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
+                </ng-container>
+        
+            
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="precio">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Unitario </th>
+                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                </ng-container>
+        
+                
+                <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+                    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let element">
+                        <!---<button class="btn btn-primary btn-sm mx-2">Editar</button>--->
+                        <button class="btn btn-danger btn-sm">Eliminar</button>
+
+                    </td>
+        
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+            </table>
+        </div>
+        
+    </div>
+
+</div>

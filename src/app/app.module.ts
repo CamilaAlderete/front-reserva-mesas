@@ -36,10 +36,17 @@ import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.co
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
 import { BusquedaClienteComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 import { RegistroClienteComponent } from './reservas/nueva-reserva/nueva-reserva.component';
+import { ConsumoComponent } from './consumo/consumo.component';
 
 
 import { ToastrModule } from 'ngx-toastr';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ListaCategoriasComponent } from './categorias/lista-categorias/lista-categorias.component';
+import { NuevaCategoriaComponent } from './categorias/nueva-categoria/nueva-categoria.component';
+import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-categoria.component';
+import { NuevoProductoComponent } from './productos/nuevo-producto/nuevo-producto.component';
+import { ListaProductosComponent } from './productos/lista-productos/lista-productos.component';
+import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
 
 
 @NgModule({
@@ -61,7 +68,14 @@ import {MatDialogModule} from '@angular/material/dialog';
     NuevaReservaComponent,
     EditarReservaComponent,
     BusquedaClienteComponent,
-    RegistroClienteComponent
+    RegistroClienteComponent,
+    ConsumoComponent,
+    ListaCategoriasComponent,
+    NuevaCategoriaComponent,
+    EditarCategoriaComponent,
+    NuevoProductoComponent,
+    ListaProductosComponent,
+    EditarProductoComponent,
   ],
   imports: [
     BrowserModule,

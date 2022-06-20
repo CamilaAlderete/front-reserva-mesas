@@ -14,6 +14,7 @@ import { EditarMesaComponent } from './mesas/editar-mesa/editar-mesa.component';
 import { ListaReservasComponent } from './reservas/lista-reservas/lista-reservas.component';
 import { NuevaReservaComponent } from './reservas/nueva-reserva/nueva-reserva.component';
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
+import { ConsumoComponent } from './consumo/consumo.component';
 
 const routes: Routes = [
   { path: '', 
@@ -49,9 +50,10 @@ const routes: Routes = [
           { path: '', redirectTo: 'lista', pathMatch: 'full'},
           { path: 'lista', component: ListaReservasComponent },
           { path: 'nuevo', component: NuevaReservaComponent },
-          { path: ':id/editar', component: EditarReservaComponent }
+          { path: ':id/editar', component: EditarReservaComponent },
+          { path: ':id/consumo', component:ConsumoComponent}
         ]
-      },
+      }
     ]
   }
  

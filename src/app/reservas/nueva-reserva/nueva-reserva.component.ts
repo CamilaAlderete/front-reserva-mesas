@@ -25,6 +25,10 @@ export class NuevaReservaComponent implements OnInit {
 
   restaurantes: any;
   mesas: any;
+  //mesasOcupadas: any;
+  mesasOcupadas = [
+    {id:1, nombre:'mesa x', RestauranteId:1, capacidad:3, x:5, y:5, planta:1}
+  ];
 
   idCliente: any;
 
@@ -172,7 +176,7 @@ export class NuevaReservaComponent implements OnInit {
     this.httpService.post('reservacion/', e)
     .subscribe(e => {
       this.toastr.success('Reservación exitosa');
-      this.atras()
+      this.atras(); // LUEGO DE RESERVAR DEBERA IR A LA PANTALLA DE CONSUMO...
     },
     err => {
       console.log(err);
@@ -241,10 +245,6 @@ export class NuevaReservaComponent implements OnInit {
 
     });
   }
-
-
-
-  
 
   
 
