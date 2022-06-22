@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { DatePipe } from '@angular/common'
 import { HTTPService } from 'src/app/http.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ThisReceiver } from '@angular/compiler';
 //import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 
@@ -26,9 +27,7 @@ export class NuevaReservaComponent implements OnInit {
   restaurantes: any;
   mesas: any;
   //mesasOcupadas: any;
-  mesasOcupadas = [
-    {id:1, nombre:'mesa x', RestauranteId:1, capacidad:3, x:5, y:5, planta:1}
-  ];
+  mesasOcupadas: any;
 
   idCliente: any;
 
@@ -70,6 +69,26 @@ export class NuevaReservaComponent implements OnInit {
 
   customInit(){
     this.loadRestaurantes();
+  }
+
+  getMesasOcupadas(data: any){
+    const e = data;
+
+    this.httpService.post('reservacion/ocupadasPrueba',e)
+    .subscribe( result => {
+
+      console.log('MESAS OCUPADAS');
+      console.log(result);
+      this.mesasOcupadas = result;
+    },err => {
+      console.log(err);
+      this.toastr.error(
+        'No se pudo obtener la lista de mesas ocupadas',
+        'Error'
+      );
+
+    });
+   
   }
 
   //obtiene toda la lista de restaurantes
@@ -115,6 +134,7 @@ export class NuevaReservaComponent implements OnInit {
         //console.log(data);
 
         this.buscarMesasLibres(data);
+        this.getMesasOcupadas(data);
       }
     }
 
