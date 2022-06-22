@@ -44,6 +44,9 @@ import { NuevoProductoComponent } from './productos/nuevo-producto/nuevo-product
 import { ListaProductosComponent } from './productos/lista-productos/lista-productos.component';
 import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
 
+import { BusquedaClienteComponent2 } from './consumo/consumo.component';
+import { RegistroClienteComponent2 } from './consumo/consumo.component';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -76,6 +79,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     NuevoProductoComponent,
     ListaProductosComponent,
     EditarProductoComponent,
+    BusquedaClienteComponent2,
+    RegistroClienteComponent2,
   ],
   imports: [
     BrowserModule,

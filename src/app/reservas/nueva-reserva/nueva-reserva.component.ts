@@ -162,6 +162,32 @@ export class NuevaReservaComponent implements OnInit {
   }
 
 
+  generarCabeceraConsumo(reservacion: any){
+    const e = {
+        ReservacionId: reservacion.id,
+        estado: "abierto",
+        fechaCreacion: reservacion.fecha,
+        horaCreacion: new Date().getHours()
+    }
+
+    this.httpService.post('cabeceraConsumo/', e)
+    .subscribe(e => {
+      //this.toastr.success('');
+      //console.log('RESERVACION')
+      //console.log(e);
+      this.atras(); 
+    },
+    err => {
+      console.log(err);
+      this.toastr.error(
+        'No se pudo generar la cebecera de consumo',
+        'Error'
+      );
+
+    });
+  }
+
+
   reservarMesa(){
 
     const e = {
@@ -176,7 +202,9 @@ export class NuevaReservaComponent implements OnInit {
     this.httpService.post('reservacion/', e)
     .subscribe(e => {
       this.toastr.success('Reservación exitosa');
-      this.atras(); // LUEGO DE RESERVAR DEBERA IR A LA PANTALLA DE CONSUMO...
+      //console.log('RESERVACION')
+      //console.log(e);
+      this.generarCabeceraConsumo(e);
     },
     err => {
       console.log(err);

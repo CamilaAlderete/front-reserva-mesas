@@ -12,7 +12,7 @@ export class ListaProductosComponent implements OnInit {
 
   dataSource: any;
 
-  displayedColumns: string[] = ['id','nombre', 'precio', 'acciones'];  //columnas del la tabla
+  displayedColumns: string[] = ['id','nombre', 'precio','categoria', 'acciones'];  //columnas del la tabla
 
 
   constructor(
@@ -29,6 +29,7 @@ export class ListaProductosComponent implements OnInit {
   loadProductos(){
     this.httpService.getAll('producto/')
       .subscribe(e => {
+        console.log('PRODUCTOS');
         console.log(e);
         this.dataSource = e;
       },
